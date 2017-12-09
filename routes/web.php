@@ -43,3 +43,11 @@ echo $_SERVER['SERVER_NAME'];
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/kadek', function () {
+
+	$x = new KadekSystemInfo();
+	$y = $x->getSystemInfo();
+	print_r($y);
+	//return 'Laravel version: '.KadekSystemInfo::getServerInfo();
+});
