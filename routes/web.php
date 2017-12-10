@@ -20,12 +20,7 @@ Route::get('/hello', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/home', 'HomeController@index')->name('home');
+Route::get('/admin/system-info', 'HomeController@showSysInfo')->name('sysinfo');
 
-Route::get('/kadek', function () {
 
-	$x = new KadekSystemInfo();
-	$y = $x->getSystemInfo();
-	print_r($y);
-	//return 'Laravel version: '.KadekSystemInfo::getServerInfo();
-});

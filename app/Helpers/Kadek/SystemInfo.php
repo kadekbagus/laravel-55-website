@@ -75,7 +75,7 @@ class SystemInfo {
               $data['php_version'] = $phpVersion;
               $data['database_version'] = $databaseVersion;
               $data['database_type'] = $databaseType;
-              $data['sever_info'] = $serverInfo;
+              $data['server_info'] = $serverInfo;
           }
 
           return $data;
