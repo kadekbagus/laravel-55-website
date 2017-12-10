@@ -16,21 +16,28 @@ class SystemInfo {
         return app()::VERSION;
     }
 
-    public static function getPhpVersion()
+    public static function getPhpVersion($fullInfo = false)
     {
-        return phpversion();
+        $version = phpversion();
+        if (!$fullInfo){
+            $version = substr($version, 0, strpos($version, "-"));
+        }
+        return $version;
     }
 
-    public static function getDatabaseVersion()
+    public static function getDatabaseVersion($fullInfo = false)
     {
         $results = DB::select( DB::raw("select version()") );
-        $db =  $results[0]->{'version()'};
-        return $db;
+        $version =  $results[0]->{'version()'};
+        if (!$fullInfo){
+            $version = substr($version, 0, strpos($version, "-"));
+        }
+        return $version;
     }
 
     public static function getDatabaseType()
     {
-        $version = self::getDatabaseVersion();
+        $version = self::getDatabaseVersion(true);
 
         if (strpos($version, 'Maria') !== false) {
             return 'Maria';
@@ -46,13 +53,13 @@ class SystemInfo {
         return $server;
     }
 
-    public function getSystemInfo($returnType = 'object')
+    public function getSystemInfo($returnType = 'object', $fullInfo = false)
     {
         try {
 
           $laravelVersion = self::getLaravelVersion();
-          $phpVersion = self::getPhpVersion();
-          $databaseVersion = self::getDatabaseVersion();
+          $phpVersion = self::getPhpVersion($fullInfo);
+          $databaseVersion = self::getDatabaseVersion($fullInfo);
           $databaseType = self::getDatabaseType();
           $serverInfo = self::getServerInfo();
           
