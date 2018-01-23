@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('test');
+    return view('welcome');
 });
 
 Route::get('/hello', function () {
@@ -23,4 +23,8 @@ Auth::routes();
 Route::get('/admin/home', 'HomeController@index')->name('home');
 Route::get('/admin/system-info', 'HomeController@showSysInfo')->name('sysinfo');
 
+
+Route::get('/test', function () {
+    return view('test');
+});
 
