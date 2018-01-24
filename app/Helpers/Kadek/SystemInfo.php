@@ -3,12 +3,12 @@ namespace App\Helpers\Kadek;
 
 use DB;
 use StdClass;
- 
+
 class SystemInfo {
 
     /**
      * @param void
-     * 
+     *
      * @return string
      */
     public static function getLaravelVersion()
@@ -29,9 +29,9 @@ class SystemInfo {
     {
         $results = DB::select( DB::raw("select version()") );
         $version =  $results[0]->{'version()'};
-        if (!$fullInfo){
-            $version = substr($version, 0, strpos($version, "-"));
-        }
+        // if (!$fullInfo){
+        //     $version = substr($version, 0, strpos($version, "-"));
+        // }
         return $version;
     }
 
@@ -62,7 +62,7 @@ class SystemInfo {
           $databaseVersion = self::getDatabaseVersion($fullInfo);
           $databaseType = self::getDatabaseType();
           $serverInfo = self::getServerInfo();
-          
+
           if ($returnType === 'object') {
               $data = new StdClass();
               $data->laravel_version = $laravelVersion;
