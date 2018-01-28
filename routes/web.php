@@ -23,23 +23,3 @@ Route::get('/page/{slug}', 'PageController@index')->name('page');
 Route::get('/test', function () {
     return view('test');
 });
-
-
-
-
-/*
-
-table main_pages
-
-main_page_id
-title
-slug
-content
-status
-created_by
-modified_by
-created_at
-updated_at
-
-
-*/
