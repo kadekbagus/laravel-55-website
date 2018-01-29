@@ -23,3 +23,15 @@ Route::get('/page/{slug}', 'PageController@index')->name('page');
 Route::get('/test', function () {
     return view('test');
 });
+
+Route::resource('admin/page', 'AdminPageController', [
+    'names' => [
+        'index'   => 'admin-page.index',
+        'store'   => 'admin-page.new',
+        'create'  => 'admin-page.create',
+        'show'    => 'admin-page.show',
+        'edit'    => 'admin-page.edit',
+        'update'  => 'admin-page.update',
+        'destroy' => 'admin-page.destroy'
+    ]
+]);
