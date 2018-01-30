@@ -15,11 +15,13 @@ class CreatePagesTable extends Migration
     {
         Schema::dropIfExists('pages');
         Schema::create('pages', function (Blueprint $table) {
-            $table->increments('main_page_id');
-            $table->string('main_page_name', 25);
-            $table->string('slug')->unique();
-            $table->text('content')->nullable();
+            $table->increments('page_id');
+            $table->string('page_name', 25);
+            $table->string('page_type', 15);
+            $table->string('slug', 50)->unique();
             $table->string('status', 10)->default('inactive');
+            $table->text('content')->nullable();
+            $table->integer('parent_id')->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('modified_by')->nullable();
             $table->timestamps();
