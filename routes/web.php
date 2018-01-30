@@ -27,7 +27,7 @@ Route::get('/test', function () {
 Route::resource('admin/page', 'AdminPageController', [
     'names' => [
         'index'   => 'admin-page.index',
-        'store'   => 'admin-page.new',
+        'store'   => 'admin-page.store',
         'create'  => 'admin-page.create',
         'show'    => 'admin-page.show',
         'edit'    => 'admin-page.edit',

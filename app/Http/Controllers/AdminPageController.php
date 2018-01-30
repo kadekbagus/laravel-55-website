@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Page;
 
 class AdminPageController extends Controller
 {
@@ -14,6 +15,8 @@ class AdminPageController extends Controller
     public function index()
     {
         //
+        $pages = Page::get();
+        print_r($pages);
     }
 
     /**
@@ -24,6 +27,7 @@ class AdminPageController extends Controller
     public function create()
     {
         //
+        return view('admin.pages');
     }
 
     /**
@@ -34,7 +38,10 @@ class AdminPageController extends Controller
      */
     public function store(Request $request)
     {
+        //print_r($request);
         //
+        $name = $request->input('page_name');
+        print_r($name);
     }
 
     /**
