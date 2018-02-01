@@ -38,7 +38,6 @@ class AdminPageController extends Controller
      */
     public function store(Request $request)
     {
-        //print_r($request);
         //
         $name = $request->input('page_name');
         print_r($name);
@@ -64,6 +63,7 @@ class AdminPageController extends Controller
     public function edit($id)
     {
         //
+        return view('admin.page-edit');
     }
 
     /**
