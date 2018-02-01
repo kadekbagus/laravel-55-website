@@ -15,13 +15,13 @@
                     @endif
 
                     You are logged in! -->
-                    <form action="{{ route('admin-page.store') }}" method="post">
+<!--                     <form action="{{ route('admin-page.store') }}" method="post">
                       <label for="GET-name">Name:</label>
                       <input type="text" name="page_name">
                       <input type="text" name="content">
                       <input type="submit" value="Save">
                       {{ csrf_field() }}
-                    </form>
+                    </form> -->
 
                 </div>
             </div>

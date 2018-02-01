@@ -16,7 +16,7 @@
 
       <nav>
         <div class="nav-wrapper green darken-3">
-          <a href="#" class="brand-logo"><i class="large material-icons hide-on-large-only">adb</i><span class="flow-text hide-on-med-and-down" style="padding-left:25px;">Web</span></a>
+          <a href="#" class="brand-logo"><i class="large material-icons hide-on-large-only">adb</i><span class="flow-text hide-on-med-and-down" style="padding-left:25px;">Admin</span></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             @guest
@@ -24,7 +24,7 @@
                 <li><a href="{{ route('register') }}">Register</a></li>
             @else
                 <li><a href="{{ route('admin-home') }}">Home</a></li>
-                <li><a href="{{ route('admin-page.index') }}">Page</a></li>
+                <li><a href="{{ route('admin-page-index') }}">Page</a></li>
                 <li><a href="{{ route('admin-sysinfo') }}">System Info</a></li>
             @endguest
           </ul>
@@ -34,7 +34,7 @@
                 <li><a href="{{ route('register') }}" class="white-text">Register</a></li>
             @else
                 <li><a href="{{ route('admin-home') }}" class="white-text">Home</a></li>
-                <li><a href="{{ route('admin-page.index') }}" class="white-text">Page</a></li>
+                <li><a href="{{ route('admin-page-index') }}" class="white-text">Page</a></li>
                 <li><a href="{{ route('admin-sysinfo') }}" class="white-text">System Info</a></li>
             @endguest
           </ul>
