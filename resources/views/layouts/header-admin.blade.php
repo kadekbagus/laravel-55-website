@@ -88,7 +88,8 @@
       <script type="text/javascript" src={{{ asset('js/materialize.min.js') }}}></script>
 
       <script>
-        $(".button-collapse").sideNav();
+        $('.button-collapse').sideNav();
+        $('select').material_select();
       </script>
     </body>
   </html>
