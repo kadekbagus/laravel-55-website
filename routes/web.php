@@ -12,17 +12,16 @@
 */
 
 Route::get('/', 'PageController@index')->name('root-page');
+Route::get('/page/{slug}', 'PageController@index')->name('page');
+
+Route::get('/test', function () {
+    return view('test');
+});
 
 Auth::routes();
 
 Route::get('/admin', 'AdminController@index')->name('admin-home');
 Route::get('/admin/system-info', 'AdminController@showSysInfo')->name('admin-sysinfo');
-Route::get('/page/{slug}', 'PageController@index')->name('page');
-
-
-Route::get('/test', function () {
-    return view('test');
-});
 
 Route::resource('admin/page', 'AdminPageController', [
     'names' => [

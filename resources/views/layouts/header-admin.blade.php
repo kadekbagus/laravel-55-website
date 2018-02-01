@@ -24,7 +24,7 @@
                 <li><a href="{{ route('register') }}">Register</a></li>
             @else
                 <li><a href="{{ route('admin-home') }}">Home</a></li>
-                <li><a href="{{ route('admin-page-index') }}">Page</a></li>
+                <li><a href="{{ route('admin-page-index') }}">Pages</a></li>
                 <li><a href="{{ route('admin-sysinfo') }}">System Info</a></li>
             @endguest
           </ul>
@@ -34,7 +34,7 @@
                 <li><a href="{{ route('register') }}" class="white-text">Register</a></li>
             @else
                 <li><a href="{{ route('admin-home') }}" class="white-text">Home</a></li>
-                <li><a href="{{ route('admin-page-index') }}" class="white-text">Page</a></li>
+                <li><a href="{{ route('admin-page-index') }}" class="white-text">Pages</a></li>
                 <li><a href="{{ route('admin-sysinfo') }}" class="white-text">System Info</a></li>
             @endguest
           </ul>
@@ -45,7 +45,7 @@
 
       @yield('content')
 
-      <div style="height:500px"></div>
+      <div style="height:300px"></div>
 
         <footer class="page-footer green darken-3">
           <div class="container">

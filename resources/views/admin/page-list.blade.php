@@ -1,31 +1,13 @@
-@extends('layouts.header')
+@extends('layouts.header-admin')
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-<!--                     @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in! -->
-<!--                     <form action="{{ route('admin-page.store') }}" method="post">
-                      <label for="GET-name">Name:</label>
-                      <input type="text" name="page_name">
-                      <input type="text" name="content">
-                      <input type="submit" value="Save">
-                      {{ csrf_field() }}
-                    </form> -->
-
-                </div>
-            </div>
-        </div>
-    </div>
+    <ul class="collection with-header">
+      <li class="collection-item"><h4>Pages</h4></li>
+        @foreach ($data as $page)
+            <li class="collection-item">{{ $page->page_name }}<a href="{{ route('admin-page-edit', $page->page_id) }}" class="secondary-content"><i class="material-icons">edit</i></a></li>
+        @endforeach
+    </ul>
+    <a href="{{ route('admin-page-create') }}" class="btn-floating red btn-large"><i class="material-icons">add</i></a>
 </div>
 @endsection

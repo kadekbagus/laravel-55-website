@@ -16,7 +16,7 @@ class AdminPageController extends Controller
     {
         //
         $pages = Page::get();
-        print_r($pages);
+        return view('admin.page-list', ['data' => $pages]);
     }
 
     /**
@@ -27,7 +27,7 @@ class AdminPageController extends Controller
     public function create()
     {
         //
-        return view('admin.pages');
+        return view('admin.page-create');
     }
 
     /**
