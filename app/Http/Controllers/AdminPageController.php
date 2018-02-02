@@ -39,8 +39,9 @@ class AdminPageController extends Controller
     public function store(Request $request)
     {
         //
-        $name = $request->input('page_name');
+        $name = $request->all();
         print_r($name);
+        die();
     }
 
     /**
