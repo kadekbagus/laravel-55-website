@@ -1,21 +1,36 @@
-@extends('layouts.app')
+@extends('layouts.header-admin')
 
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">System Information</div>
-
-                <div class="panel-body">
-                    <p>Laravel version : {{{ $laravel_version }}}</p>
-                    <p>PHP version : {{{ $php_version }}}</p>
-                    <p>Database type : {{{ $database_type }}}</p>
-                    <p>Database version : {{{ $database_version }}}</p>
-                    <p>Server info : {{{ $server_info }}}</p>
-                </div>
-            </div>
-        </div>
+        <ul class="collection with-header">
+            <li class="collection-header"><h4>System Information</h4></li>
+            <li class="collection-item avatar">
+                <i class="material-icons circle pink">show_chart</i>
+                <span class="title">Laravel version</span>
+                <p>{{{ $laravel_version }}}</p>
+            </li>
+            <li class="collection-item avatar">
+                <i class="material-icons circle blue">verified_user</i>
+                <span class="title">PHP version</span>
+                <p>{{{ $php_version }}}</p>
+            </li>
+            <li class="collection-item avatar">
+                <i class="material-icons circle green">folder</i>
+                <span class="title">Database type</span>
+                <p>{{{ $database_type }}}</p>
+            </li>
+            <li class="collection-item avatar">
+                <i class="material-icons circle green">folder</i>
+                <span class="title">Database version</span>
+                <p>{{{ $database_version }}}</p>
+            </li>
+            <li class="collection-item avatar">
+                <i class="material-icons circle red">wb_cloudy</i>
+                <span class="title">Server info</span>
+                <p>{{{ $server_info }}}</p>
+            </li>
+        </ul>
     </div>
 </div>
 @endsection

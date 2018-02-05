@@ -15,7 +15,7 @@
 
       <nav>
         <div class="nav-wrapper green darken-3">
-          <a href="#" class="brand-logo"><i class="large material-icons hide-on-large-only">adb</i><span class="flow-text hide-on-med-and-down">Web</span></a>
+          <a href="#" class="brand-logo"><i class="large material-icons hide-on-large-only">adb</i><span class="flow-text hide-on-med-and-down" style="padding-left:25px;">Web</span></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <li><a href="#">Home</a></li>
