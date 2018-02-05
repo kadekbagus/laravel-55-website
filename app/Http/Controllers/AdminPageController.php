@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Page;
+use Validator;
 
 class AdminPageController extends Controller
 {
@@ -38,10 +39,38 @@ class AdminPageController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $name = $request->all();
-        print_r($name);
-        die();
+        $pageName = $request->input('page_name');
+        $pageContent = $request->input('page_content');
+        $slug = str_slug($pageName);
+
+        $this->registerCustomValidation();
+
+        // validate the input
+        $validator = Validator::make(
+            array('page_name'=> $pageName,
+                  'page_content' => $pageContent),
+            array('page_name' => 'required|max:25|slug.exist',
+                  'page_content' => 'required'),
+            array('slug.exist' => 'page already exist!')
+        );
+
+        // validation fail
+        if ($validator->fails()) {
+            return redirect('admin/page/create')
+                    ->withErrors($validator)
+                    ->withInput();
+        }
+
+        $newPage = new Page();
+        $newPage->page_name = $pageName;
+        $newPage->page_type = 'main_page';
+        $newPage->slug = $slug;
+        $newPage->status = 'active';
+        $newPage->content = $pageContent;
+        $newPage->parent_id = null;
+        $newPage->save();
+
+        return redirect('admin/page');
     }
 
     /**
@@ -88,5 +117,22 @@ class AdminPageController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    protected function registerCustomValidation()
+    {
+        // check slug exist or not
+        Validator::extend('slug.exist', function ($attribute, $value, $parameters) {
+            $slug = str_slug($value);
+            $page = Page::where('slug', $slug)
+                        ->first();
+
+            if (empty($page)) {
+                return TRUE;
+            }
+
+            return FALSE;
+        });
     }
 }

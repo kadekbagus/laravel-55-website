@@ -7,7 +7,7 @@
 	    <div class="row">
 	        <div class="input-field col s6">
 	          <i class="material-icons prefix">content_paste</i>
-	          	<input id="page_name" type="text" class="validate">
+	          	<input id="page_name" name="page_name" type="text" class="validate">
 	          <label>Page Name</label>
 	        </div>
 	    </div>
@@ -35,5 +35,15 @@
 			<i class="material-icons right">send</i>
 		</button>
     </form>
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>** {{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+	@endif
 </div>
 @endsection
