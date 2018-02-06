@@ -18,7 +18,7 @@
 	        <td>{{ $page->status }}</td>
 	        <td>
 	        	<a href="{{ route('admin-page-edit', $page->page_id) }}" class="btn-floating blue btn-small"><i class="material-icons">edit</i></a>
-	        	<a href="{{ route('admin-page-destroy', $page->page_id) }}" class="btn-floating red btn-small"><i class="material-icons">close</i></a>
+	        	<a href="#" class="btn-floating red btn-small delete-button" data-id="{{ $page->page_id }}" data-token="{{ csrf_token() }}"><i class="material-icons">close</i></a>
 	        </td>
           </tr>
         @endforeach

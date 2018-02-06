@@ -118,8 +118,12 @@ class AdminPageController extends Controller
     public function destroy($id)
     {
         //
-        print_r($id);
-        die();
+        $deletePage = Page::where('page_id', '=', $id);
+        if ($deletePage->delete()) {
+            return 'success';
+        } else {
+            return 'failed';
+        }
     }
 
 
