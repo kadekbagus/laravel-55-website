@@ -17,30 +17,36 @@
 
       <nav>
         <div class="nav-wrapper green darken-3">
-          <a href="#" class="brand-logo"><i class="large material-icons hide-on-large-only">adb</i><span class="flow-text hide-on-med-and-down" style="padding-left:25px;">Admin</span></a>
+          <a href="{{ route('admin-home') }}" class="brand-logo"><i class="large material-icons hide-on-large-only">adb</i><span class="flow-text hide-on-med-and-down" style="padding-left:25px;">Admin</span></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             @guest
                 <li><a href="{{ route('login') }}">Login</a></li>
-                <li><a href="{{ route('register') }}">Register</a></li>
+                <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
             @else
                 <li><a href="{{ route('admin-home') }}">Home</a></li>
                 <li><a href="{{ route('admin-page-index') }}">Pages</a></li>
                 <li><a href="{{ route('admin-sysinfo') }}">System Info</a></li>
+                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
             @endguest
           </ul>
           <ul class="side-nav green darken-3" id="mobile-demo">
             @guest
                 <li><a href="{{ route('login') }}" class="white-text">Login</a></li>
-                <li><a href="{{ route('register') }}" class="white-text">Register</a></li>
+                <!-- <li><a href="{{ route('register') }}" class="white-text">Register</a></li> -->
             @else
                 <li><a href="{{ route('admin-home') }}" class="white-text">Home</a></li>
                 <li><a href="{{ route('admin-page-index') }}" class="white-text">Pages</a></li>
                 <li><a href="{{ route('admin-sysinfo') }}" class="white-text">System Info</a></li>
+                <li><a href="{{ route('logout') }}" class="white-text" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
             @endguest
           </ul>
         </div>
       </nav>
+
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          {{ csrf_field() }}
+      </form>
 
       <div style="height:50px"></div>
 
@@ -93,6 +99,40 @@
         $('.button-collapse').sideNav();
         $('select').material_select();
         $('#page_content').trumbowyg();
+
+        $(".delete-button").click(function(){
+        var id = $(this).data("id");
+        var token = $(this).data("token");
+
+        var request = $.ajax(
+            {
+                url: "page/"+id,
+                type: 'DELETE',
+                dataType: "JSON",
+                data: {
+                    "id": id,
+                    "_method": 'DELETE',
+                    "_token": token,
+                },
+                // success: function ()
+                // {
+                //     console.log("it Work");
+                // }
+            });
+
+            request.done(function( msg ) {
+              //$( "#log" ).html( msg );
+              console.log(msg);
+              // if(msg === 'success') {
+              //   location.reload(true);
+              // }
+
+              // if (msg === 'failed') {
+              //   console.log('failed');
+              // }
+            });
+        });
       </script>
+      <script src="{{ asset('js/app.js') }}"></script>
     </body>
   </html>
