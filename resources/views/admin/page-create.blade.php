@@ -12,7 +12,7 @@
 	    </div>
 	    <div class="row">
 	    	<div class="switch col s6">
-	    		<div id="page_content"></div>
+	    		<textarea id="page_content" name="page_content"></textarea>
 	    	</div>
 	    </div>
 	    <button class="btn waves-effect waves-light" type="submit">Create
@@ -30,4 +30,8 @@
     </div>
 	@endif
 </div>
+<script type="text/javascript" src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+<script>
+	CKEDITOR.replace('page_content');	
+</script>
 @endsection
