@@ -5,13 +5,13 @@
     <form class="col s12" action="{{ route('admin-page-store') }}" method="POST">
     	{{ csrf_field() }}
 	    <div class="row">
-	        <div class="input-field col s6">
+	        <div class="input-field col s12">
 	          	<input id="page_name" name="page_name" type="text" class="validate">
 	          <label>Page Name</label>
 	        </div>
 	    </div>
 	    <div class="row">
-	    	<div class="switch col s6">
+	    	<div class="switch col s12">
 	    		<textarea id="page_content" name="page_content"></textarea>
 	    	</div>
 	    </div>
