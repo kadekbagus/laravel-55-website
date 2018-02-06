@@ -13,7 +13,7 @@
 	    </div>
 	    <div class="row">
 	    	<div class="switch col s6">
-	    		<div id="page_content">{{ $data->page_content }}</div>
+	    		<textarea name="page_content">{{ $data->content }}</textarea>
 	    	</div>
 	    </div>
 	    <button class="btn waves-effect waves-light" type="submit">Update

@@ -93,12 +93,14 @@
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
       <script type="text/javascript" src="{{ asset('js/materialize.min.js') }}"></script>
-      <script type="text/javascript" src="{{ asset('trumbowyg/trumbowyg.min.js') }}"></script>
+      <script src="//cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
+     <!--  <script type="text/javascript" src="{{ asset('trumbowyg/trumbowyg.min.js') }}"></script> -->
 
       <script>
         $('.button-collapse').sideNav();
         $('select').material_select();
-        $('#page_content').trumbowyg();
+        //$('#page_content').trumbowyg();
+        CKEDITOR.replace( 'page_content' );
 
         $(".delete-button").click(function(){
         var id = $(this).data("id");
