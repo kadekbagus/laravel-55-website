@@ -93,7 +93,8 @@ class AdminPageController extends Controller
     public function edit($id)
     {
         //
-        return view('admin.page-edit');
+        $editPage = Page::where('page_id', '=', $id)->first();
+        return view('admin.page-edit', ['data' => $editPage]);
     }
 
     /**
