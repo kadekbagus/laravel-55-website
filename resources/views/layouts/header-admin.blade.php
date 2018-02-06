@@ -21,7 +21,7 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             @guest
-                <li><a href="{{ route('login') }}">Login</a></li>
+                <!-- <li><a href="{{ route('login') }}">Login</a></li> -->
                 <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
             @else
                 <li><a href="{{ route('admin-home') }}">Home</a></li>
@@ -32,7 +32,7 @@
           </ul>
           <ul class="side-nav green darken-3" id="mobile-demo">
             @guest
-                <li><a href="{{ route('login') }}" class="white-text">Login</a></li>
+                <!-- <li><a href="{{ route('login') }}" class="white-text">Login</a></li> -->
                 <!-- <li><a href="{{ route('register') }}" class="white-text">Register</a></li> -->
             @else
                 <li><a href="{{ route('admin-home') }}" class="white-text">Home</a></li>
