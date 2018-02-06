@@ -47,11 +47,11 @@ class AdminPageController extends Controller
 
         // validate the input
         $validator = Validator::make(
-            array('page_name'=> $pageName,
+            array('page_name'    => $pageName,
                   'page_content' => $pageContent),
-            array('page_name' => 'required|max:25|slug.exist',
+            array('page_name'    => 'required|max:25|slug.exist',
                   'page_content' => 'required'),
-            array('slug.exist' => 'page already exist!')
+            array('slug.exist'   => 'page already exist!')
         );
 
         // validation fail
