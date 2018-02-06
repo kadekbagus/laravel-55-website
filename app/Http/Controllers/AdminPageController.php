@@ -118,6 +118,8 @@ class AdminPageController extends Controller
     public function destroy($id)
     {
         //
+        print_r($id);
+        die();
     }
 
 

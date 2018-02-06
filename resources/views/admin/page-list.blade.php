@@ -2,12 +2,28 @@
 
 @section('content')
 <div class="container">
-    <ul class="collection with-header">
-      <li class="collection-item"><h4>Pages</h4></li>
-        @foreach ($data as $page)
-            <li class="collection-item">{{ $page->page_name }}<a href="{{ route('admin-page-edit', $page->page_id) }}" class="secondary-content"><i class="material-icons">edit</i></a></li>
+    <h4>Pages</h4>
+     <table class="striped">
+        <thead>
+          <tr>
+		    <th>Page Name</th>
+		    <th>Status</th>
+		    <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+       	@foreach ($data as $page)
+          <tr>
+	        <td>{{ $page->page_name }}</td>
+	        <td>{{ $page->status }}</td>
+	        <td>
+	        	<a href="{{ route('admin-page-edit', $page->page_id) }}" class="btn-floating blue btn-small"><i class="material-icons">edit</i></a>
+	        	<a href="{{ route('admin-page-destroy', $page->page_id) }}" class="btn-floating red btn-small"><i class="material-icons">close</i></a>
+	        </td>
+          </tr>
         @endforeach
-    </ul>
-    <a href="{{ route('admin-page-create') }}" class="btn-floating red btn-large"><i class="material-icons">add</i></a>
+        </tbody>
+      </table>
+      <a href="{{ route('admin-page-create') }}" class="btn-floating green btn-large"><i class="material-icons">add</i></a>
 </div>
 @endsection
