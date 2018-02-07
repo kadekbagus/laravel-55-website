@@ -9,6 +9,16 @@ use Validator;
 class AdminPageController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -107,6 +117,39 @@ class AdminPageController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $pageId = $id;
+        $pageName = $request->input('page_name');
+        $pageContent = $request->input('page_content');
+        $slug = str_slug($pageName);
+
+        $this->registerCustomValidation();
+
+        // validate the input
+        $validator = Validator::make(
+            array('page_id'      => $pageId,
+                  'page_name'    => $pageName,
+                  'page_content' => $pageContent),
+            array('page_id'      => 'required|page.exist',
+                  'page_name'    => 'required|max:25',
+                  'page_content' => 'required'),
+            array('page.exist'   => 'page id not found',
+                  'slug.exist'   => 'page already exist!')
+        );
+
+        // validation fail
+        if ($validator->fails()) {
+            return redirect('admin/page/'.$id.'/edit')
+                    ->withErrors($validator)
+                    ->withInput();
+        }
+
+        $updatePage = Page::where('page_id', '=', $pageId)->first();
+        $updatePage->page_name = $pageName;
+        $updatePage->slug = $slug;
+        $updatePage->content = $pageContent;
+        $updatePage->save();
+
+        return redirect('admin/page');
     }
 
     /**
@@ -140,6 +183,18 @@ class AdminPageController extends Controller
             }
 
             return FALSE;
+        });
+
+        // check slug exist or not
+        Validator::extend('page.exist', function ($attribute, $value, $parameters) {
+            $page = Page::where('page_id', $value)
+                        ->first();
+
+            if (empty($page)) {
+                return FALSE;
+            }
+
+            return TRUE;
         });
     }
 }
