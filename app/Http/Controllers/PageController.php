@@ -30,10 +30,18 @@ class PageController extends Controller
         if($slug === null) {
             return view('index', ['pageSlugs' => $pages->toArray()]);
         } else {
-            print_r($slug);
-            // look up to main_page table
+            $pageContent = Page::where('slug', '=', $slug)
+                                ->where('status', '=', 'active')
+                                ->first();
 
-            //display the page content
+            if (is_object($pageContent)) {
+                return view('page', ['pageSlugs' => $pages->toArray(),
+                                      'pageTitle' => $pageContent->page_name,
+                                      'pageContent' => $pageContent->content
+                                     ]);
+            } else {
+                return 'page not found';
+            }
         }
     }
 

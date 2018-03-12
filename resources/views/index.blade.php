@@ -19,12 +19,12 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             @foreach ($pageSlugs as $pageSlug)
-                <li><a href="{{ route('page', ['slug' => $pageSlug['slug']]) }}">{{ $pageSlug['page_name'] }}</a></li>
+              <li><a href="{{ route('page', ['slug' => $pageSlug['slug']]) }}">{{ ucfirst($pageSlug['page_name']) }}</a></li>
             @endforeach
           </ul>
           <ul class="side-nav green darken-3" id="mobile-demo">
             @foreach ($pageSlugs as $pageSlug)
-                <li><a href="{{ route('page', ['slug' => $pageSlug['slug']]) }}">{{ $pageSlug['page_name'] }}</a></li>
+              <li><a href="{{ route('page', ['slug' => $pageSlug['slug']]) }}">{{ ucfirst($pageSlug['page_name']) }}</a></li>
             @endforeach
           </ul>
         </div>
