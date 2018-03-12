@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Page;
 
 class PageController extends Controller
 {
@@ -22,8 +23,12 @@ class PageController extends Controller
      */
     public function index($slug = null)
     {
+        $pages = Page::select('page_name','slug')
+                     ->where('status', '=', 'active')
+                     ->get();
+
         if($slug === null) {
-            return view('index');
+            return view('index', ['pageSlugs' => $pages->toArray()]);
         } else {
             print_r($slug);
             // look up to main_page table

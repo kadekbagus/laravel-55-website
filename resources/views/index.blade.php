@@ -18,14 +18,14 @@
           <a href="#" class="brand-logo"><i class="large material-icons hide-on-large-only">adb</i><span class="flow-text hide-on-med-and-down" style="padding-left:25px;">Web</span></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            @foreach ($pageSlugs as $pageSlug)
+                <li><a href="{{ route('page', ['slug' => $pageSlug['slug']]) }}">{{ $pageSlug['page_name'] }}</a></li>
+            @endforeach
           </ul>
           <ul class="side-nav green darken-3" id="mobile-demo">
-            <li><a href="#" class="white-text">Home</a></li>
-            <li><a href="#" class="white-text">About</a></li>
-            <li><a href="#" class="white-text">Contact</a></li>
+            @foreach ($pageSlugs as $pageSlug)
+                <li><a href="{{ route('page', ['slug' => $pageSlug['slug']]) }}">{{ $pageSlug['page_name'] }}</a></li>
+            @endforeach
           </ul>
         </div>
       </nav>
