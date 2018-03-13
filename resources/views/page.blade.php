@@ -15,7 +15,7 @@
 
       <nav>
         <div class="nav-wrapper green darken-3">
-          <a href="#" class="brand-logo"><i class="large material-icons hide-on-large-only">adb</i><span class="flow-text hide-on-med-and-down" style="padding-left:25px;">Web</span></a>
+          <a href="{{ route('root-page') }}" class="brand-logo"><i class="large material-icons hide-on-large-only">adb</i><span class="flow-text hide-on-med-and-down" style="padding-left:25px;">Web</span></a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             @foreach ($pageSlugs as $pageSlug)
@@ -31,14 +31,9 @@
       </nav>
 
       <div class="container">
-        <h1>Welcome</h1>
+        <h1>{{ ucfirst($pageTitle) }}</h1>
         <div class="row">
-        <div class="col s12">In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation. Replacing meaningful content with placeholder text allows designers to design the form of the content before the content itself </div>
-        </div>
-
-        <div class="row">
-          <div class="col s8">In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation. Replacing meaningful content with placeholder text allows designers to design the form of the content before the content itself </div>
-          <div class="col s4">In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to demonstrate the textual elements of a graphic document or visual presentation. Replacing meaningful content with placeholder text allows designers to design the form of the content before the content itself </div>
+        <div class="col s12">{!! $pageContent !!}</div>
         </div>
       </div>
 
