@@ -1,7 +1,7 @@
 ## About
 
-This is a simple website made using laravel 5.5 and materialize css framework, the website is equipped with admin panel where 
-you can add new page and edit the content, just like cms. 
+This is a simple website made using laravel 5.5 and materialize css framework, the website is equipped with admin panel where
+you can add new page and edit the content, just like cms.
 
 
 ## Requirements
@@ -13,7 +13,7 @@ you can add new page and edit the content, just like cms.
 ## How to use
 1. clone this repository, use git clone command `git clone https://github.com/kadekbagus/laravel-55-website.git`
 2. run `composer install -vvv`
-3. copy .env.example into .env, set the database config to match your environment
+3. copy `.env.example` into `.env`, set the database config to match your environment
 4. run `php artisan key:generate`
 5. run migration `php artisan migrate`
 6. run seeder `php artisan db:seed`
